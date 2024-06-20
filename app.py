@@ -1,6 +1,7 @@
 import pickle
 import streamlit as st
 import requests
+import pandas as pd
 
 
 def fetch_poster(movie_id):
@@ -31,8 +32,8 @@ def recommend(movie):
 
 
 st.header("Movie Recommender System")
-movies = pickle.load(open("movie_list.pkl", "rb"))
-similarity = pickle.load(open("similarity.pkl", "rb"))
+movies = pd.compat.pickle_compat.load(open("movie_list.pkl", "rb"))
+similarity = pd.compat.pickle_compat.load(open("similarity.pkl", "rb"))
 
 movie_list = movies["title"].values
 selected_movie = st.selectbox("Type or select a movie from the dropdown", movie_list)
